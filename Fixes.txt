@@ -1,0 +1,74 @@
+------------------------------------------------------------------
+Version 2.9.1.1 (06. May. 2021)
+------------------------------------------------------------------
+
+Fixes list:
+
+---------------------------------/ SERVER /---------------------------------
+
+Client connection timeout changed from 300 to 900s
+900=15 minutes
+
+MAX_CLIENT_INACTIVITY  = 900;
+
+(HD2ServerService.pas)
+
+------------------------------------------------------------------
+
+Some variables data types changed to accommodate 
+preferred values.
+
+(HD2ServerService.pas)
+
+------------------------------------------------------------------
+
+Disabled: application minimize to TrayIcon (Triconsi.pas)
+(errors when server compiled)
+Added buttons:
+
+Start service
+Stop service
+
+(TestMain.dfm)
+------------------------------------------------------------------
+
+
+
+
+
+---------------------------------/ CLIENT /---------------------------------
+
+Fixed error: "Cannot focus a disabled or invisible window"
+
+FormClose procedure added.
+
+(ServerSettings.pas)
+
+------------------------------------------------------------------
+
+Disabled un-used Buttons and text field 
+for global messages (user login main window):
+
+Buttons:
+'Reboot server now'
+'Send'
+
+(Main.dfm)
+
+------------------------------------------------------------------
+
+Maximum message interval changed from 180 to 300.
+
+(user login main window) 
+
+(Main.dfm)
+
+------------------------------------------------------------------
+
+
+
+
+
+
+
+

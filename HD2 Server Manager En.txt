@@ -1,0 +1,216 @@
+-------------------------------------------------------------------
+Hidden and Dangerous II {Sabre squadron} Server Manager version 2.9
+          Copyright (c)1992-2011 Atom software Studio
+-------------------------------------------------------------------
+
+Donation:
+---------
+   If you'd like to support the author of this software, you can donate using the
+   PayPal. Feel free send any amount of money to
+
+               hd2donations@atlas.cz
+
+   PayPal account.
+
+      Thanks.
+
+File list:
+----------
+   HD2ServerManager.exe        - server side application for managing HD2 servers
+   HD2ServerManagerClient.exe  - client for remote connection
+
+
+New Features:
+-------------
+   - Allows to setup up to 64 players for any gamestyle and both HD2 and HD2 SQ servers
+
+Notes:
+------
+   - Works on Windows XP/Vista/7 32/64 bit - TESTED (on 64 bits works as 32 bits process)
+   - Finished IP banning feature (now works with UNICODE)
+     - tested on Czech and English windows
+     - You should not experince any IP ban problems anymore
+   - Configuration option ServerIP is not needed anymore, but it is not necessary to remove it from CFG
+     - Information about players are readed from the HD2DS(SQ) process memory directly now
+   - It was discovered, why the HD2DS servers does not work with IPv6 enabled:
+       The game is based on the DirectPlay component from DirectX and it works in the following, 
+       ununderstandable way. When the IPv6 is enabled, the first UDP port used by server is automatically
+       bound to the IPv6 address and the rest of the ports is bound to the IPv4 addresses. It can't work.
+       Maybe with some IPv4->IPv6 or opposite helpers.
+
+Server manager instalation procedure:
+-------------------------------------
+
+   Create new folder on remote server (machine), where will dedicated server hosted.
+	For example:
+		c:\program files\Hidden and dangerous 2
+
+   Into newly created folder:
+      a) Copy all files from Hidden and Dangerous 2 INSTALLED game directory
+         with all required patches (Sabre Squadron supported too) - proably you will
+         copy all files from your local computer, where is HD2 game installed.
+      b) Install Hidden and Dangerous II game
+         Install extension pack Sabre squadron (if required)
+         Install all required game patches (lastest is 1.12)
+
+   Note.: Server manager was tested with game version 1.12
+
+   Into newly created folder create new folder, where server manager files will be placed.
+    For example.:
+		c:\program files\hidden and dangerous 2\Server Manager
+
+   Copy file HD2ServerManager.exe into this folder from RAR/ZIP archive hd2sm.rar
+
+   Execute file HD2ServerManager. Do right click on HD2 icon in systray and select EXIT from menu.
+
+   There will be created two files in folder, which you were created in previous steps:
+      hd2serverlog.txt - Server log - check it when you have problems
+      config.txt       - configuration file of server manager service.
+
+   Open config.txt in text editor (notepad, ps pad or other)
+
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      Modify only next three fields:
+      v2.5,2.6     ServerIP         - public IP address of server where is server manager hosted
+      v2.4,2.8     ServerPort       - TCP/IP Port for client connections
+      v2.4,2.8     HD2DSPath        - path to hd2ds.exe (for example c:\program files\Hidden and dangerous 2\hd2ds.exe)
+      
+      !!! ServerIP option is not necessary to fill anymore, data about playerss are readed from the DS process memory !!!
+
+   Don't modify other items or values and don't do it never. Access to other items is allowed through
+   remote client.
+
+   If you lost config.txt file or if it will be dammaged, delete it and execute HD2ServerManager.exe, exit from
+   it and update previously discused fields again.
+
+   When will be config.txt dammaged or lost, all settings and configurations of all your servers will be lost.   
+   
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+   When you will update from version 2.4 to 2.5, you must update your config file:
+        - add ServerIP port option manually - insert it before ServerPort option
+        - delete all current ban lists
+
+   Update from 2.5 to 2.6 does not affect configuration file
+
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   ServerPort value means TCP port on which will server manager listen
+   to client connections. Default value is 2332, but you can change it to value
+   between 1025 - 65535.
+   
+   You will need setup your firewall correctly! to accept incoming TCP connections.
+   
+   Value HD2DSPath is path to Hidden and dangerous dedicated server, which can be
+   located in instalation folder of HD2 game. HD2DSPath should be defined between
+   two double quotes - ".
+      For example:
+	     "c:\program files\hidden and dangerous 2\hd2ds.exe"
+
+   Save modified configuration file.
+
+   Delete file hd2serverlog.txt
+
+   Execute file HD2ServerManager.exe
+
+   Open hd2serverlog.txt file and check it for errors.
+
+   If you find errors in log file, check all previous steps.
+
+   -----------------------------------------------------------------------------------------------------------
+
+   Functionality test:
+   On same comuter on which is HD2ServerManager.exe running execute
+   HD2ServerManagerClient.exe.
+
+   Into Hostname and port field type localhos:port, which you typed in
+   configuration file - for example localhost:2332
+
+   Into Username field type Admin
+
+   Field Password leave blank.
+
+   Press Connect button and if there is not any problem, you should see
+   configuration manager with three tabs:
+
+   Server manager, Users, Servers
+
+   Server manager tab:
+   -------------------
+
+      You can configure global server manager settings:
+
+		Watchdog
+	        Testing of running HD2 servers - if it does not respond or
+		    if CPU usage is high for a long time, tries to stop server
+		    and execute it again.
+
+        Messaging
+		    Global setup of ADMIN messages, which can be send to players
+			in specified interval.
+			
+			Forced Messages
+			   send specified messages to all managed servers in interval
+			   specified before.
+			
+			Forced Ban list
+			   You can add users which are banned for all managed servers
+			   and for all servers configurations.
+								
+   Users tab:
+   ----------
+
+      You can configure users which have access to server manager and which
+	  can manage servers.
+	  
+      You can assign two roles for user:
+            Administrator  - Can modify global server settings and manage users
+            Server manager - Can modify only servers settings - You can define
+			                 access to servers in its properties.
+
+      Note:
+	  	Setup new password for server administrator (user ADMIN) before you will
+		continue.
+
+   Servers tab:
+   ------------
+
+      You can create, modify or delete sessions of HD2 game, setup user rights,
+	  setup sessions potrs, start, stop or restart sessions, watch current
+	  session status and configure game settings of created sessions.
+
+      To setup users access and session port you need Administrator privilege.
+
+      Properties of game, start or stop sessions can modify only users with
+	  granted access to session. You must add all users, which can manage
+	  sessions manually to each session. Administrator can't modify sessions
+	  parameters while you dont add him to sessions.
+
+      Game properties are similiar to HD2 configurator with some extensions. Maps
+	  which you can add to session must be placed in MPMAPLIST.TXT file in main
+	  HD2 game folder. When you change MPMALIST.TXT file, you must manually update
+	  sessions configuration.
+	  
+	  When you will done with server creation and session configuring, you can start
+	  configured session - server. Check if started server is running properly -
+	  check HD2DS console for errors and try connect to this server from HD2 Game.
+	  If you cant see your server in server list, enter IP adress and port manually and
+	  test. Next step is check firewall, where four UDP ports must be enabled - its four
+	  ports from port which you set in server properties.
+	  For example:
+	     When you set port 10000 for dedicated server, you must allow UDP ports 10000, 10001,
+		 10002 and 10003 on your firewall.		 
+	  
+      When server manager can't start server (tries it 3 times), shows its status as
+	  error. You will need check your session configuration - mainly check field session
+	  name and try type TEST to this field, becouse some characters are not allowed.
+
+      Some problems can be raised with map settings and codecs for online players conversation.
+	  Dont use codecs if you really need it.
+
+      Also you can setup "NON CLAN SIDE" players kick, configuration ban list, server messages,
+	  admin messages and watch dog checking. Reserving clanside is not supported in this version.
+	  
+      Each server configuration uses its own banlist.
+

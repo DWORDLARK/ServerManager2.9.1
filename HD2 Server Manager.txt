@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Hidden and Dangerous II {Sabre squadron} Server Manager version 2.9
+          Copyright (c)1992-2011 Atom software Studio
+-------------------------------------------------------------------
+
+Podpora autora:
+---------------
+   Pokud bzste radi podporili autora tohoto software, muyete venovat
+   jakoukoliv castku pomoci systemu PayPal. Pro tento ucel pouzijte
+   nasledujici Paypal account:
+
+       hd2donations@atlas.cz
+
+   Diky.
+
+Soubory:
+--------
+   HD2ServerManagerClient.exe    - klient pro pripojeni k manageru
+   HD2ServerManager.exe          - manager pro server HD2DS.exe
+
+Nove vlastnosti:
+----------------
+   - Nastaveni az 64 hracu pro vsechny mody a HD2 i HD2SQ
+	- Prozatim poradne neotestovano
+
+Poznamky:
+---------
+   - Pracuje s Windows XP/Vista/7 32/64bit
+   - Kompletne opraveno banovani hracu (nyni pracuje na bazi UNICODE)
+     - odzkouseno na CZ / EN Windows
+     - uz by se nemely stavat zadne chyby pri banovani
+   - Kofiguracni volba ServerIP jiz nemusi byt nastavena v konfiguracnim souboru,
+     ale neni ji nutne z puvodnich konfigu odstranovat.
+     - informace o pripojenych hracich je nyni ziskavana primo z pameti procesu HD2DS(SQ)
+   - Bylo objeveno, z jakeho duvodu HD2DS servery nefunguji pri zapnutem IPv6. Hra je
+     zalozena na komponente DirectPlay (soucast starsich DirectX) a ta pracuje nasledujicim
+     nepochopitelnym zpusobem. Pokud je povolen IPv6, prvni UDP port pouzity HD2 serverem je
+     automaticky nabindovan na IPv6 adresu, zbytek portu na adresu IPv4. To nemuze pracovat,
+     mozna v pripade nejakeho helperu pro IPv6.
+
+
+Instalace serveru:
+------------------
+   Vytvorte adresar na pocitaci, kde bude provozovan dedikovany server
+	napr.: c:\program files\Hidden and dangerous 2
+
+   Do vytvorene slozky:
+      a) nakopirujte nainstalovanou hru Hidden and dangerous 2
+         pripadne se vsemi updaty a extension packem Sabre Squadron.
+      b) nainstalujte hru Hidden and dangerous 2
+         nainstalujte extension pack Sabre Squadron
+         nainstalujte vsechny dostupne patche a updaty
+
+      pozn.: program byl testovan pouze s verzi hry 1.12
+
+   Ve vytvorenem adresari vytvorte dalsi adresar
+        napr.: c:\program files\hidden and dangerous 2\Server Manager
+
+   Do tohoto adresare nakopirujte soubor HD2DSM.exe
+
+   Spustte soubor HD2DSM.exe a stisknete tlacitko CLOSE
+
+   Ve vami vytvorene slozce pribudou dalsi dva textove soubory:
+      hd2serverlog.txt - soubor s informacemi o prubehu spousteni serveru
+      config.txt       - konfiguracni soubor server manageru
+
+   v textovem editoru (nejlepe notepad) otevrete soubor config.txt
+
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      EDITUJTE POUZE POLE:
+           ServerIP         - IP adresa na ktere jsou sledovany prichozi
+                              pakety
+           ServerPort       - port tcp/ip na kterem bude manager 
+                              naslouchat pripojenim klientu
+           HD2DSPath        - cesta s umistenim souboru hd2ds.exe 
+
+   Ostatni polozky nechte bezezmeny a NIKDY JE RUCNE NEUPRAVUJTE!
+   Pristup ke vsem ostatnim polozkam umoznuje klient server manageru.
+   Dojde-li k poskozeni konfiguracniho souboru, smazte jej a vytvorte
+   znovu spustenim a uzavrenim souboru HD2DSM.exe.
+
+   PRIJDETE VSAK O VESKERE NASTAVENI A ULOZENE KONFIGURACE JEDNOTLIVYCH
+   SESSIONS.
+
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   Hodnota ServerPort urcuje, na jakem TCP portu bude manager naslouchat 
+   prichozim pripojenim konfiguracnich klientu. Je nutno, aby byl takto
+   nastaveny port otevren pro prichozi pripojeni na vasem firewallu.
+   Defaultni hodnota je 2332, doporucuji vsak hodnotu nekde okolo
+   nastaveneho portu pro Hidden and dangerous dedicated server viz dale.
+
+   Hodnota HD2DSPath !v uvozovkach! urcuje umisteni dedikovaneho serveru
+   hry Hidden and dangerous 2 (soubor hd2ds.exe).
+      Napr.: "c:\program files\hidden and dangerous 2\hd2ds.exe"
+
+   Ulozte konfiguracni soubor.
+
+   Vymazte soubor hd2serverlog.txt
+
+   Spustte program HD2DSM.EXE.
+
+   Otevrete soubor hd2serverlog.txt a zkontrolujte, zda obsahuje nejaka
+   chybova hlaseni.
+
+   Pokud ne, pokracujte dale, jinak zkontrolujte predchozi kroky.
+
+
+   Test funkcnosti: 
+   na stejnem pocitaci na kterem bezi HD2DSM.EXE spustte program 
+   HD2 Server Manager.exe s ikonou Hidden and dangerous 2.
+
+   do pole Hostname and port napiste localhost:port, ktery jste zadali v
+   konfiguracnim souboru (defaultne localhost:2332 nebo pouze localhost)
+
+   do pole Username napiste Admin
+
+   pole Password nechte prazdne.
+
+   Stisknete tlacitko Connect a pokud je vse nakonfigurovanu spravne,
+   rozbali se konfiguracni okno manageru obsahujici tri zalozky:
+
+   Server manager, Users, Servers
+
+   V zalozce Server manager:
+   -------------------------
+
+      Je mozno konfigurovat globalni nastaveni server manageru:
+
+		Watchdog  - hlidaci pes
+                            testuje, zda jsou spustene servery v provozu
+                            v kazdem zadanem intervalu. Pokud ne, snazi se
+                            je ukoncit a spustit znovu
+
+                Messaging - globalni nastaveni zobrazovani zprav administratora
+                            v zadanem intervalu
+
+                Forced Messages - zobrazuje zadane zpavy na vsech spustenych
+                                  serverech
+
+                ostatni pole nejsou v teto verzi podporovana.
+
+   V zalozce Users:
+   ----------------
+
+      Je mozno konfigurovat uzivatele, kteri maji pristup k manageru a to ve 
+      dvou rolich:
+            Administrator  - muze menit globalni nastaveni a nastaveni uzivatelu
+            Server manager - muze menit pouze nastaveni session, ke ktere ma
+                             nakonfigurovan pristup
+
+      Doporucuji rovnou prenastavit pristupove heslo pro uzivatele Admin.
+
+   V zalozce servers:
+   ------------------
+
+      Je mozno vytvaret jednotlive sessions pro hru H&D2, prirazovat uzivatele,
+      kteri mohou menit nastaveni session, nastavovat porty sessions, spoustet a
+      zastavovat sessions, sledovat stav jednotlivych sessions, konfigurovat
+      nastaveni hry pro jednotlive sessions.
+
+      Nastavovat opravneni a port na kterem session hry bezi muze pouze uzivatel s
+      opravnenim Administrator, nikoliv server manager.
+
+      Nastavovat vlastnosti hry mohou pouze uzivatele prirazeni k jednotlivym
+      serverum! Pokud chcete, aby mel admin moznost konfigurovat vlastnosti hry,
+      je nutno jej pridat k povolenym uzivatelum!
+
+      Nastaveni vlastnosti hry odpovida pravidlum pro hru HD2. Mapy, ktere je mozno
+      pridavat je nutne mit v konfiguracnim souboru MPMAPLIST.TXT v hlavnim adresari
+      hry. Dojde-li ke zmene tohoto souboru (nazvum jednotlivych map), je nutno upravit
+      tez konfiguraci jednotlivych serveru.
+
+      Po nakonfiguravani hry muzete zkusit spustit dedikovany server.
+      Zkontrolujdte, zda server skutecne bezi (otevrela se konzole serveru) a konfigurace
+      probehla v poradku - status serveru je running, v konzoli serveru nejsou zadne chyby.
+
+      Pokud se server nepodarilo spustit, je tato akce opakovana jeste dvakrat.
+      Nepodari-li se server sustit ani po trech pokusech, je jeho status error a je
+      nutno zkontrolovat konfiguraci serveru.
+
+      Nejvice problemu vznika s nastavenim map (map not exists) a kodeky pro online
+      konverzaci, kterou doporucuji radeji nepouzivat.
+
+      V konfiguraci je dale mozno nastavit automaticke vyhazovani uzivatelu "NON CLAN SIDE",
+      zobrazovani zprav admina a sledovani session watchdogem. Ban list a reserving clanside
+      neni v teto verzi podporovano.
+
+      Port, ktery je konfigurovan pro session hry je nutno tez povolit na vasem firewallu!
+      Resp. port a jeste za nim tri nasledujici (napr. 10000, 10001, 10002, 10003)
+      Tyto porty jsou porty protokolu UDP, nikoliv TCP!
+
+
+
+   PRO VSE VYSE UVEDENE PREDPOKLADAM, ZE VLASTNINTE VEREJNOU IP ADRESU, KTERA JE
+   PRISTUPNA Z CELEHO INTERNETU. PRIPASNE NASTAVENI STATICKEHO NATu ZDE NEPOPISUJI!
+
+   Pripojeni klientem k server manageru je pak nasledujici:
+
+       do pole Hostname:port zadejte hostname.domain:configured port (napr seznam.cz:2332)
+                             nebo    public IP:configured port (napr: 194.228.32.3:2332)
+
+       pro preklad hostname.domain je nutna registrace domeny a zaznamu DNS!
+
