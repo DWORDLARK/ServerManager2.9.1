@@ -31,7 +31,7 @@ Main.dfm
 ----------------------------------------------------------------------------------------
 2.9.1.4:
 
-(26.08.2024)
+(27.08.2024)
 
 Server settings - Maps (ServerSettings.pas)
 +Maps counter for map lists
@@ -49,14 +49,16 @@ Server settings - Maps (ServerSettings.pas)
 +Local Memo (automatic save / load from local drive)
 +Password Hash 
 
-Hash function uses driver: PWH64.dll
-Hash is generated from User name and Password
 User can generate Hash after Hostname, Username, Password fields are filled.
+Server service must run. It can be local. (Localhost)
 After closing login error message: "Login to server failed!"
 User can copy generated Hash.
 Hash is generated into text field with text "Hash"
-After this user can give Username and Hash to server ADMIN.
+User can give Username and Hash to server ADMIN.
 This helps protect user password !
+
+Hash is generated from User name and Password !
+Old password wont work if Username is changed !
 
 ----------------------------------------------------------------------------------------
 
