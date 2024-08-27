@@ -38,20 +38,20 @@ Client program
 (27.08.2024)
 
 Server settings - Maps (ServerSettings.pas)
-+Maps counter for map lists
-+Add Random maps
-+Shuffle List (selected maps list)
-+Sort List (selected maps list)
-+Selection highlighter remains at last selection location
-+Drag-Drop with cursor to change map order (selected maps list)
-+Search (Find) map name
-+Jump to next if found
-+Quick remove of all selected maps
++Maps counter for map lists.
++Add Random maps.
++Shuffle List (selected maps list).
++Sort List (selected maps list).
++Selection highlighter remains at last selection location.
++Drag-Drop with cursor to change map order (selected maps list).
++Search (Find) map name.
++Jump to next if found.
++Quick remove of all selected maps.
 
 
 (Main)
-+Local Memo (automatic save / load from local drive)
-+Password Hash 
++Local Memo (automatic save / load from local drive).
++Password Hash. 
 
 ----------------------------------------------------------------------------------------
 
