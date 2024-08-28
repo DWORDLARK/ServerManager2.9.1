@@ -34,7 +34,7 @@ Main.dfm
 
 ----------------------------------------------------------------------------------------
 2.9.1.4:
-Client program
+(Client program)
 (27.08.2024)
 
 Server settings - Maps (ServerSettings.pas)
@@ -58,7 +58,7 @@ Server settings - Maps (ServerSettings.pas)
 
 ----------------------------------------------------------------------------------------
 v: 2.9.1.2
-Server
+(Server)
 27.08.2024
 
 +Server reads map names from individual maplist files.
