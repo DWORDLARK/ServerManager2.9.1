@@ -61,9 +61,10 @@ Hash is generated from User name and Password !
 Old password wont work if Username is changed !
 
 ----------------------------------------------------------------------------------------
+2.9.1.5:
+(11.04.2025)
 
-
-
-
+WatchDog minimum set to 60
+----------------------------------------------------------------------------------------
 
 
