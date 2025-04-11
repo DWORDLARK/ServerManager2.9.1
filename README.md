@@ -2,6 +2,15 @@
   Server Manager 2.9.1.x
 ----------------------------------------------------------------------------------------
 
+Note for server settings:
+  
+  Use long time interval for WatchDog.
+  60sec or more.
+  This can prevent ServerManager crash when some server consoles need re-start.
+  
+  With too short interval Server manager will try to start server console that 
+  is already in process of starting and this mostly ends with ServerManager crash.
+  
 ----------------------------------------------------------------------------------------
 Version History:  
 (Date Format: DD.MM.YYYY)
@@ -81,5 +90,19 @@ Server Admin can use this file to store map names into server own maplist (mpmap
 ! ! !  Server console is not able to load map / start service if mission entry is only present in
 server own maplist file (mpmaplist_[server name])
 Full copy of mission data (items/objectives) must be present in mpmaplist.txt, with same mission name.
+
+----------------------------------------------------------------------------------------
+
+v: 2.9.1.5
+(Server)
+11.04.2025
+
+----------------------
++ServerLog file is not deleted after ServerManager restart.
+  (Date is added to Logfile name)
+
++ mpmaplist with server name  (mpmaplist_[server name]) is created when
+    user creates new server.
+    No need for user to creat in manually !
 
 ----------------------------------------------------------------------------------------
