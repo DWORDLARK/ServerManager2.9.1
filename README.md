@@ -4,7 +4,7 @@
 
 Note for server settings:
   
-  Use long time interval for WatchDog.
+  Use long time interval for WatchDog interval.
   60sec or more.
   This can prevent ServerManager crash when some server consoles need re-start.
   
