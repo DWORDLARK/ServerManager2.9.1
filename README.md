@@ -10,7 +10,11 @@ Note for server settings:
   
   With too short interval Server manager will try to start server console that 
   is already in process of starting and this mostly ends with ServerManager crash.
-  
+
+
+  +Included program: HD2_md (HD2_md.rar)
+    This program adds item names to mpmaplist.txt
+
 ----------------------------------------------------------------------------------------
 Version History:  
 (Date Format: DD.MM.YYYY)
